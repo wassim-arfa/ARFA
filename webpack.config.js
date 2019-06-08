@@ -19,7 +19,8 @@ Encore
      */
     .addStyleEntry('css/app', 
     [
-        './node_modules/bootstrap/dist/css/bootstrap.min.css'       
+        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './assets/css/signin.css'       
     ])
     .addEntry('js/app',
     [

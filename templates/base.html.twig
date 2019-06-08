@@ -3,12 +3,69 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="https://certification.symfony.com/favicon-32x32.png?v=yyalQXYGEA">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://certification.symfony.com/favicon-16x16.png?v=yyalQXYGEA">
         {% block stylesheets %}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         {{ encore_entry_link_tags('css/app') }}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+        <a class="navbar-brand" href="{{ path('home') }}"><img src="https://d1pwix07io15pr.cloudfront.net/v3d8ab079bb/images/logos/header-logo.svg" height='50' alt="Symfony"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+       {% if not app.user %}
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+          <ul class="navbar-nav mr-auto" style="padding-left: 50px;">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('fos_user_security_login') }}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Register</a>
+            </li>     
+          </ul>
+        {% endif %}
+
+          <ul class="navbar-nav" style="margin-right: 1px; margin-left: 25%;">
+              <form class="form-inline my-2 my-md-0" style="padding-top: 10px;">
+                <div class="form-label-group">
+                  <form class="form-inline my-2 my-lg-0">
+                   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                   <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </div>
+              </form>
+          </ul>
+          {% if app.user %}
+          <ul class="navbar-nav ml-auto nav-flex-icons">
+
+          <li class="nav-item avatar dropdown">
+            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <img src="{{ app.user.gravatar }} " height='35' class="rounded-circle z-depth-0" alt="avatar image">
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+               <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}"><i class="far fa-user"></i> {{ app.user }}</a>
+                <a class="dropdown-item" href="{{ path('fos_user_profile_edit') }}"><i class="far fa-edit"></i> Edit Profile</a>
+                <a class="dropdown-item" href="{{ path('fos_user_change_password') }}">Change Password</a>
+                <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Logout</a>
+            </div>
+          </li>
+        </ul>
+
+          {% endif %}
+        </div>
+      </nav>
+
+        {% block body %}
+            {% block content %}
+                {% block fos_user_content %}{% endblock %}
+            {% endblock %}
+        {% endblock %}
+
         {% block javascripts %}
         {{ encore_entry_script_tags('js/app') }}
         {% endblock %}

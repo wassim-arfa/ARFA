@@ -1,0 +1,9 @@
+{% trans_default_domain 'FOSUserBundle' %}
+            
+    <div class="container" align="center">
+    <div class="form-signin" align="center">
+        <img src="{{ user.gravatar }}"class="rounded-circle" width="140" height="140" border="0" ></a>
+        <h3 class="media-heading"><small>@</small>{{ user.username }}</h3>
+        <span><strong>Email :</strong></span>
+        <span class="label label-warning">{{ user.email }}</span>
+    </div></div>

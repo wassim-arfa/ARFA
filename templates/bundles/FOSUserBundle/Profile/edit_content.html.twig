@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container" align="center">
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'form-signin' } }) }}
+      <img class="mb-4" src="https://symfony.com/images/logos/sf-positive.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Edit Profile</h1>   
+{{ form_errors(form.username) }}
+    {{ form_widget(form.username, {'attr': {'placeholder': 'form.username', 'class': 'form-control mb-1'} }) }}
+        {{ form_errors(form.email) }}
+    {{ form_widget(form.email, {'attr': {'placeholder': 'form.email', 'class': 'form-control mb-1'} }) }}
+        {{ form_errors(form.current_password) }}
+    {{ form_widget(form.current_password, {'attr': {'placeholder': 'form.current_password', 'class': 'form-control mb-1'} }) }}
+    <div>
+        <input type="submit" class="btn btn-lg btn-dark btn-block" value="{{ 'profile.edit.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
