@@ -1,0 +1,25 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container" align="center">
+    <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+        {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+      <img class="mb-4" src="https://symfony.com/images/logos/sf-positive.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>   
+        {% if error %}
+       <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+      <label for="inputEmail" class="sr-only">{{ 'security.login.username'|trans }}</label>
+      <input type="text" class="form-control mb-1" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans }}" autocomplete="username" required autofocus>
+      <label for="inputPassword" class="sr-only">{{ 'security.login.password'|trans }}</label>
+      <input type="password" class="form-control" id="password" name="_password"  placeholder="{{ 'security.login.password'|trans }}" autocomplete="current-password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" id="remember_me" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans }}
+        </label>
+      </div>
+      <button class="btn btn-lg btn-dark btn-block" type="submit" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
+    </form>
+</div>

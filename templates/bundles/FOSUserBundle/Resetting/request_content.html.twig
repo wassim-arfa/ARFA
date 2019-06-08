@@ -1,0 +1,13 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container" align="center">
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-signin">
+      <img class="mb-4" src="https://symfony.com/images/logos/sf-positive.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Resetting Password</h1>   
+    <div>
+        <input type="text" class="form-control mb-2" id="username" name="username" placeholder="{{ 'resetting.request.username'|trans }}" required="required" />
+    </div>
+    <div>
+        <input type="submit" class="btn btn-lg btn-dark btn-block" value="{{ 'resetting.request.submit'|trans }}" />
+    </div>
+</form>

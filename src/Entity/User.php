@@ -18,10 +18,20 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    protected $gravatar;
 
     public function __construct()
     {
         parent::__construct();
         // your own logic
+    }
+
+    /**
+     * Return gravatar URL
+     */
+    public function getGravatar()
+    {
+            $gravatar = md5($this->getEmail());
+            return 'https://www.gravatar.com/avatar/'.$gravatar;
     }
 }
