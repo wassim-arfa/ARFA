@@ -18,6 +18,7 @@
         <label>
           <input type="checkbox" id="remember_me" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans }}
         </label>
+        | <a href="{{ path('fos_user_resetting_request')}}">Forgot Password ?</a>
       </div>
       <button class="btn btn-lg btn-dark btn-block" type="submit" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
